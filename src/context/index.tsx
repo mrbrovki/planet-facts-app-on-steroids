@@ -5,15 +5,20 @@ import { ContextProps, ReducerFn, State } from '../lib/Types';
 
 
 
-const initState = {};
+const initState: State = {
+  planet: 'Earth'
+};
+
 export const Context = createContext<ContextProps>({state: initState, dispatch: () => {}});
 
 const AppContext:FC<{children: ReactNode}> = ({children}) => {
  const reducer:ReducerFn<State> = (state, action) => {
   const {type, payload} = action;
   switch(type){
-   default:
-    return{...state};
+    case 'PLANET':
+      return {...state, planet: payload};
+    default:
+      return{...state};
   }
  };
  const [state, dispatch] = useReducer(reducer, initState);

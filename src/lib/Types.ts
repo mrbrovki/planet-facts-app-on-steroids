@@ -1,5 +1,7 @@
 import { Dispatch } from 'react';
 
+type PlanetNames = 'Mercury' | 'Venus' | 'Earth' | 'Mars' | 'Jupiter' | 'Saturn' | 'Uranus' | 'Neptune';
+
 interface ContentAndSource{
   content: string;
   source: string;
@@ -24,11 +26,11 @@ export interface PlanetProps{
 };
 
 export interface State {
-
+  planet: PlanetNames;
 };
 
 type Action = 
-| {type: '', payload: ''}
+| {type: 'PLANET', payload: PlanetNames}
 
 export interface ContextProps{
  state: State;
